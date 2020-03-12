@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Exemplo XMLHttpRequest</title>  
+	<script type="text/javascript">
+		function buscaCep() {
+			let inputCep = document.getElementById('cep');
+			let cep = inputCep.value.replace('-', '');
+			let url = 'https://viacep.com.br/ws/' + cep + '/json';
+			let xhr = new XMLHttpRequest();
+			xhr.open('GET', url, true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {    
+					alert(xhr.responseText);
+				}
+			}
+			xhr.send();
+		}
+
+	</script>
+</head>
+<body>
+	<form>
+		<label>Buscando CEP</label>
+		<div >
+			<input name="cep" id="cep" type="text">
+			<span ><button onclick="buscaCep()">Buscar CEP</button></span>
+		</div>
+	</form>
+</body>
+</html>
